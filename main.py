@@ -1,9 +1,12 @@
 from typing import Union
 from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import numpy as np
 from PIL import Image
+import io
 
 from groq import Groq
 from typing import List, Dict, Any
@@ -13,8 +16,6 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"message": "Bloomy API"}
-
-
 
 #load model
 #=======================================================================================================================
